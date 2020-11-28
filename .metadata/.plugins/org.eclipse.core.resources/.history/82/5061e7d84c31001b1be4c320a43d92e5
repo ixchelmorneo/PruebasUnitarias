@@ -1,0 +1,21 @@
+package com.uacm.edu.mx.models.service;
+
+import java.util.List;
+
+import com.uacm.edu.mx.models.entity.Producto;
+
+public class ProductoServiceImpl implements IProductoService {
+
+	@Override
+	public Producto alta(String nombreProducto, String codIdent, double precio, int stock, String detalleProducto) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Producto> obtenerTodosProducto() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

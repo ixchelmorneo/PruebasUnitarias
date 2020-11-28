@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head">
+<meta charset="UTF-8">
+<title>Usuario</title>
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+
+</head>
+<body>
+<!-- BARRA DE NAVEGACION -->
+
+<header th:fragment="head">
+
+</header>
+
+
+<!-- CONTENIDO -->
+
+<div class="container"></div>
+
+
+<!-- PIE DE PAGINA -->
+<footer th:fragment="head">
+
+</footer>
+
+
+
+</body>
+</html>

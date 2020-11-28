@@ -1,0 +1,15 @@
+package com.uacm.edu.mx.models.service;
+
+import com.uacm.edu.mx.models.entity.Usuario;
+
+public interface IUsuarioService {
+	
+	
+	public List<Usuario> listarTodos();
+	
+	public void guardar(Usuario usuario);
+	
+	public Usuario buscarPorId(Long id);
+	
+
+}

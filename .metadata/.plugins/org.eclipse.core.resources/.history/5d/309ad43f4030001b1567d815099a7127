@@ -1,0 +1,65 @@
+package com.uacm.edu.mx.controller;
+
+import java.util.logging.LogManager;
+import java.util.logging.Logger;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+
+@Controller
+public class UsuarioController {
+
+	/*@GetMapping("/")
+	public String index() {
+		return "home";
+	}*/
+	
+private final Logger log = LogManager.getLogger(ClienteController.class);
+	
+	@Autowired
+	private ClienteService clienteService;
+	
+	@Autowired
+	private UsuarioRepository clienteRepository;
+	
+	@PostMapping("/alta")
+    private String recibePeticion(Map <String, Object> model, Cliente cliente) throws ApplicacionExcepcion {
+        
+        log.debug("Etrando al metodo registra");
+        
+        log.debug("Etrando al metodo registra a: " + cliente.getNombre() );
+        
+
+        clienteService.alta(cliente.getNombre(),cliente.getApellidoP(),cliente.getApellidoM(),
+        		cliente.getEdad(),
+        		cliente.getTelefono(),
+        		cliente.getDireccion(),cliente.getEmail(),cliente.getPassword());
+        
+        return "index"; 
+    }
+	
+	@GetMapping("/Clientes")
+	private String buscarModelos(Map <String, Object> model) {
+		
+       
+        List <Cliente> clientesObtenidos =  Lists.newArrayList(clienteRepository.findAll());
+        
+        log.debug("tamanio: " + clientesObtenidos.size());
+        
+		model.put("clientes",clientesObtenidos);
+		
+		return "mostrar"; 
+	}
+	
+	
+	@GetMapping("/Cancelar")
+	private String Cancelar() {
+		
+ 
+        log.debug("Entrando al metodo Cancelar");
+        
+		
+		return "login"; 
+	}
+	
+}

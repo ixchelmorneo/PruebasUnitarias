@@ -1,0 +1,63 @@
+package com.uacm.edu.mx.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.uacm.edu.mx.models.service.IUsuarioService;
+
+
+@Controller
+@RequestMapping("/adminVista")
+public class AdministradorController {
+
+	
+	
+private final Logger log = LogManager.getLogger(ClienteController.class);
+	
+@Autowired
+private IUsuarioService usuarioService;
+	
+	@PostMapping("/alta")
+    private String recibePeticion(Map <String, Object> model, Cliente cliente) throws ApplicacionExcepcion {
+        
+        log.debug("Etrando al metodo registra");
+        
+        log.debug("Etrando al metodo registra a: " + cliente.getNombre() );
+        
+
+        clienteService.alta(cliente.getNombre(),cliente.getApellidoP(),cliente.getApellidoM(),
+        		cliente.getEdad(),
+        		cliente.getTelefono(),
+        		cliente.getDireccion(),cliente.getEmail(),cliente.getPassword());
+        
+        return "index"; 
+    }
+	
+	@GetMapping("/usuariosList")
+	private String buscarModelos(Map <String, Object> model) {
+		
+       
+        List <Cliente> clientesObtenidos =  Lists.newArrayList(clienteRepository.findAll());
+        
+        log.debug("tamanio: " + clientesObtenidos.size());
+        
+		model.put("clientes",clientesObtenidos);
+		
+		return "mostrar"; 
+	}
+	
+	
+	@GetMapping("/eliminar")
+	private String Cancelar() {
+		
+ 
+        log.debug("Entrando al metodo Cancelar");
+        
+		
+		return "login"; 
+	}
+	
+	
+	
+}

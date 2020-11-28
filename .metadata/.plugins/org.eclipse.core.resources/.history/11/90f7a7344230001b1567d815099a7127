@@ -1,0 +1,50 @@
+package com.uacm.edu.mx.controller;
+
+import java.util.logging.LogManager;
+import java.util.logging.Logger;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+
+@Controller
+public class UsuarioController {
+
+	/*@GetMapping("/")
+	public String index() {
+		return "home";
+	}*/
+	
+public static final Logger log = Logger.getLogger(UsuarioController.class);
+	
+	@Autowired
+	private ClienteService clienteService;
+	
+	@Autowired
+	private UsuarioRepository usuarioRepository;
+	//usuarioService
+	
+	@Autowired
+	private HttpSession httpSession;
+	
+	@PostMapping("/login")
+	public String login(Map <String, Object> modelo,Cliente usuario /*DTO*/) {
+		//esto es una entidad dominio de JPA
+		Cliente usuarioObtenido=usuarioRepository.findByEmailAndPasword(usuario.getEmail(),usuario.getPassword());
+		if(usuarioObtenido !=null) {
+			log.debug("entro correcto");
+			httpSession.setAttribute("userLoggedIn",usuarioObtenido);
+			modelo.put("exitoso", "login exitoso");
+			return "Productos";
+			//deslogueo
+			//httpSession.removeAttribute("userLoggedIn");
+			
+		}else {
+			log.debug("entro incorrecto");
+			modelo.put("error", "Error em el Usuario/contrasena");
+			return "redirect:/";
+		}
+		
+	}
+	
+	
+}

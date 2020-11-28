@@ -1,0 +1,5 @@
+package com.uacm.edu.mx.models.service;
+
+public interface IProductoService {
+
+}

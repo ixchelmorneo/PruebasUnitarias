@@ -1,0 +1,63 @@
+package com.uacm.edu.mx.controller;
+
+import java.util.Map;
+import java.util.logging.LogManager;
+import java.util.logging.Logger;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.uacm.edu.mx.models.entity.Producto;
+import com.uacm.edu.mx.models.repository.ProductoRepository;
+import com.uacm.edu.mx.models.service.IProductoService;
+
+@Controller
+@RequestMapping("/producto")
+public class ProductoController {
+
+	private final Logger log = LogManager.getLogger(ProductoController.class);
+	
+   
+	@Autowired
+	private ProductoService productoService;
+	
+	@Autowired
+    private ProductoRepository productoRepository;
+	
+	@PostMapping("/registrarProducto")	
+	private String recibePeticion(Map <String, Object> model, Producto producto) throws ApplicacionExcepcion {
+	
+	
+		 log.debug("Etrando al metodo registra");
+		 log.debug("-----------------------------------------------------");
+	        
+	        log.debug("Etrando al metodo registra a: " + producto.getNombreProducto());
+		
+	        productoService.alta(
+	        		producto.getNombreProducto(),
+	        		producto.getCodIdent(),	        		
+	        		producto.getPrecio(),
+	        		producto.getStock(), 
+	        		producto.getDetalleProducto());
+	        
+	        return "Productos";
+	}
+	
+	
+	@RequestMapping(method=RequestMethod.GET)
+   private String buscarProductos(Map <String, Object> model ) {
+		List<Producto> productosObtenidos = productoService.obtenerTodosProducto();
+	   
+	   log.debug("tamanio: " + productosObtenidos.size());
+	   log.debug("tamanio: " + productosObtenidos.get(0).getNombreProducto());
+	   
+	   
+	   model.put("productos", productosObtenidos);
+	    
+	   return "inventario";
+   }
+    
+	
+}

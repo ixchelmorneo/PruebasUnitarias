@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://wwwthymeleaf.org">
+<head th:replace="plantilla/template :: head">
+<title></title>
+
+</head>
+<body>
+
+<header th:replace="plantilla/template :: header"></header>
+
+	<div style=»padding: 10px; float: right; width: 45%; text-align: justify;»>
+
+<div class="container">
+
+	<form th:action="@{/cliente/alta}" method="post">
+
+		 <label for="equipo_2">nombre</label>
+		  <input type="text" name="nombre"/>
+		 <br/>
+		 <label for="equipo_2">apellido Paterno</label>
+		  <input type="text" name="apellidoP"/>
+		 <br/>
+		 <label for="equipo_2">apellido materno</label>
+		  <input type="text" name="apellidoM"/>
+		 <br/>
+		 <label for="equipo_2">edad</label>
+		  <input type="text" name="edad"/>
+		 <br/>
+		 <label for="equipo_2">telefono</label>
+		  <input type="text" name="telefono"/>
+		 <br/>
+		 <label for="equipo_2">direccion</label>
+		  <input type="text" name="direccion"/>
+		 <br/>
+		 <label for="equipo_2">correo electronico</label>
+		  <input type="text" name="correo"/>
+		 <br/>
+		  <input type="submit" value="Enviar"/>
+
+	</form>
+
+
+	<a th:href="@{/cliente/Clientes}" >Ver clientes</a>
+
+	
+	
+	
+	
+	<a th:href="@{/cliente/Cancelar}" >cancelar</a>
+
+	</div>
+	
+</body>
+</html>

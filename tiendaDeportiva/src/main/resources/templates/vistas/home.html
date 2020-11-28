@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="plantilla/template :: head">
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+
+	<header th:replace="plantilla/template :: header"></header>
+	<div
+		style="padding: 10px; float: left; width: 45%; text-align: justify;">
+
+		<div class="container">
+			<h1>Prueba desde el navegador</h1>
+		</div>
+
+	</div>
+
+	<div
+		style="padding: 10px; float: right; width: 45%; text-align: justify;">
+
+
+		<div class="container">
+
+			<div class="card bg-light">
+				<div class="card-header bg-dark text-white" th:text="${titulo}"></div>
+				<div class="card-body">
+
+					<form th:action="@{/vistas/home}" method="post">
+					
+					
+					
+						<div class="form-group row">
+							<label class="col-md-2" for="nombre">Nombre:</label> <input
+								type="text" th:field="*{nombre}"
+								class="form-control form-control-sm col-md-6" id="nombre"
+								placeholder="Nombre"> <small></small>
+						</div>
+<!-- 
+
+               <label for="codIdent" class="mb-0">Codigo</label>
+					<div class="row mb-1">
+						<div class="col-lg-12">
+							<input type="text" name="codIdent" class="form-control"
+								required="required"></input>
+						</div>
+					</div>
+ -->
+
+
+
+
+
+
+						<div class="form-group row">
+							<label class="col-md-2" for="apellidoP">apellido Paterno:</label>
+							<input type="text" th:field="*{apellidoP}"
+								class="form-control form-control-sm col-md-6" id="apellidoP"
+								placeholder="apellidoP"> <small></small>
+						</div>
+
+						<div class="form-group row">
+							<label class="col-md-2" for="apellidoM">apellido materno:</label>
+							<input type="text" th:field="*{apellidoM}"
+								class="form-control form-control-sm col-md-6" id="apellidoM"
+								placeholder="apellidoM"> <small></small>
+						</div>
+
+
+						<div class="form-group row">
+							<label class="col-md-2" for="edad">Edad:</label> <input
+								type="text" th:field="*{edad}"
+								class="form-control form-control-sm col-md-6" id="edad"
+								placeholder="edad"> <small></small>
+						</div>
+
+
+						<div class="form-group row">
+							<label class="col-md-2" for="telefono">Telefono:</label> <input
+								type="text" th:field="*{telefono}"
+								class="form-control form-control-sm col-md-6" id="telefono"
+								placeholder="telefono"> <small></small>
+						</div>
+
+
+						<div class="form-group row">
+							<label class="col-md-2" for="direccion">Direccion:</label> <input
+								type="text" th:field="*{direccion}"
+								class="form-control form-control-sm col-md-6" id="direccion"
+								placeholder="direccion"> <small></small>
+						</div>
+
+
+						<div class="form-group row">
+							<label class="col-md-2" for="email">Correo Electronico:</label>
+							<input type="text" th:field="*{email}"
+								class="form-control form-control-sm col-md-6" id="email"
+								placeholder="email"> <small></small>
+						</div>
+
+
+						<div class="card-footer bg-dark">
+
+							<input type="submit" class="btn btn-primary btn-sm"
+								value="Guardar" />
+						</div>
+
+					</form>
+
+
+				</div>
+			</div>
+
+			<a th:href="@{/cliente/Clientes}">Ver clientes</a> <a
+				th:href="@{/cliente/Cancelar}">cancelar</a>
+
+		</div>
+	</div>
+	<footer th:replace="plantilla/template :: footer"></footer>
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,11 @@
+package com.uacm.edu.mx.models.service;
+
+import com.uacm.edu.mx.models.entity.Administador;
+
+public interface IAdministradorService {
+	
+	public Administador list();
+	
+	//public Administador eliminar();
+
+}

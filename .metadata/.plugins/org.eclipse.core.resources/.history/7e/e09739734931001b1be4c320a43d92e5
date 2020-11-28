@@ -1,0 +1,48 @@
+package com.uacm.edu.mx.controller;
+
+import java.util.logging.LogManager;
+import java.util.logging.Logger;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.uacm.edu.mx.models.service.IUsuarioService;
+
+
+@Controller
+@RequestMapping("/adminVista")
+public class AdministradorController {
+
+	
+	
+
+	
+	@GetMapping("/usuariosList")
+	private String buscarModelos(Map <String, Object> model) {
+		
+       
+        List <Cliente> clientesObtenidos =  Lists.newArrayList(clienteRepository.findAll());
+        
+        log.debug("tamanio: " + clientesObtenidos.size());
+        
+		model.put("clientes",clientesObtenidos);
+		
+		return "mostrar"; 
+	}
+	
+	
+	@GetMapping("/eliminar")
+	private String Cancelar() {
+		
+ 
+        log.debug("Entrando al metodo Cancelar");
+        
+		
+		return "login"; 
+	}
+	
+	
+	
+}

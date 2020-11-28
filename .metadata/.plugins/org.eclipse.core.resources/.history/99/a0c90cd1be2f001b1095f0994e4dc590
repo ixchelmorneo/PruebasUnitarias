@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head">
+<meta charset="UTF-8">
+<title>Usuario</title>
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+
+</head>
+<body>
+<!-- BARRA DE NAVEGACION -->
+
+<header th:fragment="head">
+
+</header>
+
+
+<!-- CONTENIDO -->
+
+<div class="container"></div>
+
+
+<!-- PIE DE PAGINA -->
+<footer th:fragment="head">
+
+
+<script type="text/javascript" th:src="@{/js/jquery-3.5.1.slim.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/popper.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
+
+</footer>
+
+
+
+</body>
+</html>

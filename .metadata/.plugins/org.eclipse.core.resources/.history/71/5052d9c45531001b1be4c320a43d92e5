@@ -1,0 +1,22 @@
+package com.uacm.edu.mx.models.service.impl;
+
+import java.util.List;
+
+import com.uacm.edu.mx.models.entity.Administador;
+import com.uacm.edu.mx.models.service.IAdministradorService;
+
+public class AdministradorServiceImpl implements IAdministradorService {
+
+	@Override
+	public Administador list() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Administador> obtenerTodosProducto() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

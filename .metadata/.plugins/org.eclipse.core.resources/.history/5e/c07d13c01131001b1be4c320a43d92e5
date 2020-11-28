@@ -1,0 +1,29 @@
+package com.uacm.edu.mx.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.uacm.edu.mx.models.service.IUsuarioService;
+
+@Controller
+@RequestMapping("/")
+public class UsuarioController {
+
+	@Autowired
+	//private IUsuarioService usuarioService;
+	/*
+	@GetMapping("/")
+	public String index() {
+		return "home";
+	}*/
+	
+	@GetMapping
+	public String crear() {
+		
+		return "home";
+	}
+	
+	
+}

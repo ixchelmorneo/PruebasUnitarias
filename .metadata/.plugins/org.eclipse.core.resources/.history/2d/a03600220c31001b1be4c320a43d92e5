@@ -1,0 +1,16 @@
+package com.uacm.edu.mx.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+
+@Controller
+@GetMapping("/")
+public class UsuarioController {
+
+	@GetMapping("/")
+	public String index() {
+		return "home";
+	}
+	
+	
+}

@@ -1,0 +1,118 @@
+package com.uacm.edu.mx.models.service;
+
+import java.util.List;
+import java.util.logging.Logger;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.uacm.edu.mx.models.entity.Producto;
+
+package mx.uacm.hibernate.service.impl;
+
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import mx.uacm.hibernate.domain.Producto;
+import mx.uacm.hibernate.excepciones.ApplicacionExcepcion;
+import mx.uacm.hibernate.persistance.ProductoRepository;
+import mx.uacm.hibernate.recursos.CodigoError;
+import mx.uacm.hibernate.service.ProductoService;
+
+
+
+public class ProductoServiceImpl implements IProductoService {
+
+	public static final Logger log = Logger.getLogger(ProductoServiceImpl.class);
+
+	@Autowired
+	ProductoRepository productoRepository;
+	
+
+	
+	public Producto alta(String nombreProducto, String codIdent, double precio, int stock, String detalleProducto)
+			throws ApplicacionExcepcion  {
+		
+		
+		if (log.isDebugEnabled())
+			log.debug("Entrando a ProductoServiceImpl.alta");
+		
+		Producto producto;
+		
+		if (!(nombreProducto.matches("^[ A-Za-z]+$"))) {
+			throw new ApplicacionExcepcion(CodigoError.MAL_NOMBRE_PRODUCTO, "El nombre no es correcto");
+		}
+		
+		if (nombreProducto.length() < 4 || nombreProducto.length() > 255) {
+			throw new ApplicacionExcepcion(CodigoError.MAL_NOMBRE_PRODUCTO, "El nombre no es correcto");
+		}
+		
+		if (!(codIdent.matches("^[0-9]{12}"))) {
+			throw new ApplicacionExcepcion(CodigoError.MAL_CODIDENT, "El codigo de identificacion del producto no es correcto");
+		}
+		
+		if ((codIdent.length()<12)) {
+			throw new ApplicacionExcepcion(CodigoError.MAL_CODIDENT, "El codigo de identificacion del producto no es correcto");
+		}
+		
+		if ((codIdent.length()>12)) {
+			throw new ApplicacionExcepcion(CodigoError.MAL_CODIDENT, "El codigo de identificacion del producto no es correcto");
+		}
+		
+		if ((precio<=0.0) ){
+			throw new ApplicacionExcepcion(CodigoError.ERROR_PRECIO, "El precio  es menor a 0");
+		}
+		
+		if ((precio>7000.00) ){
+			throw new ApplicacionExcepcion(CodigoError.ERROR_PRECIO, "El precio  es mayor a 7000");
+		}
+		
+		if ((stock <5||stock>70) ){
+			throw new ApplicacionExcepcion(CodigoError. ERROR_STOCK, "El stock  es incorrecto");
+		}
+		
+		if (!(detalleProducto.matches("^[ A-Za-z-0-9]+$"))) {
+			throw new ApplicacionExcepcion(CodigoError.ERROR_DETALLE, "El detalle no es correcto");
+		}
+		
+		if ((detalleProducto.length()<4)) {
+			throw new ApplicacionExcepcion(CodigoError.ERROR_DETALLE, "El detalle no es correcto");
+		}
+		
+		if ((detalleProducto.length()>255)) {
+			throw new ApplicacionExcepcion(CodigoError.ERROR_DETALLE, "El detalle no es correcto");
+		}
+		
+
+		
+		log.debug("Entrando a ProductoSreviceImpl.alta ");
+		
+		
+		
+		
+		Producto p= new Producto();
+		p.setNombreProducto(nombreProducto);
+		p.setCodIdent(codIdent);
+		p.setPrecio(precio);
+		p.setStock(stock);
+		p.setDetalleProducto(detalleProducto);
+		
+		
+		
+		producto=productoRepository.save(p);
+		
+		return producto;
+		
+		
+		// TODO Auto-generated method stub
+		
+	}
+	
+	
+	public Producto buscarXId(Long id) {
+		
+		return productoRepository.findOne(id);
+		
+	}

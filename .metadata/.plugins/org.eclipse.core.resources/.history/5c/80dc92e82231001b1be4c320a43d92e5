@@ -1,0 +1,27 @@
+package com.uacm.edu.mx.models.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.uacm.edu.mx.models.entity.Usuario;
+import com.uacm.edu.mx.models.repository.UsuarioRepository;
+
+@Service 
+public class UsuarioServiceImpl implements IUsuarioService {
+
+	@Autowired
+	private UsuarioRepository usuarioRepository;
+	
+
+	@Override
+	public void guardar(Usuario usuario) {
+		
+		usuarioRepository.save(usuario);
+
+	}
+
+	
+
+}
