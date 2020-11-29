@@ -10,4 +10,6 @@ public interface IProductoService {
 	Producto create(Producto producto);
 	Optional<Producto> getById(Long id);
 	List<Producto> allProducto();
+	void delete(Long id);
+	Producto edit(Producto producto,Producto editProducto);
 }

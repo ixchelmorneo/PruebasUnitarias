@@ -35,4 +35,26 @@ public class ProductoServiceImpl implements IProductoService {
 		return productoRepository.findAll();
 	}
 
+	@Override
+	public void delete(Long id) {
+	productoRepository.findById(id).
+				orElseThrow(() -> new IllegalArgumentException("Invalid product Id: " + id));
+	productoRepository.deleteById(id);
+	}
+
+	@Override
+	public Producto edit(Producto producto, Producto editProducto) {
+		
+		System.out.println(producto.toString());
+		System.out.println(editProducto.toString());
+		
+		producto.setNombre(editProducto.getNombre());
+		producto.setDetalle(editProducto.getDetalle());
+		producto.setCodigo(editProducto.getCodigo());
+		producto.setPrecio(editProducto.getPrecio());
+		producto.setStock(editProducto.getStock());
+		
+		return productoRepository.save(producto);
+	}
+
 }
