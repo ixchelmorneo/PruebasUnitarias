@@ -1,49 +1,38 @@
 package com.uacm.edu.mx.models.service.impl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.thymeleaf.expression.Lists;
+import org.springframework.stereotype.Service;
 
 import com.uacm.edu.mx.models.entity.Producto;
 import com.uacm.edu.mx.models.repository.ProductoRepository;
 import com.uacm.edu.mx.models.service.IProductoService;
 
+@Service
 public class ProductoServiceImpl implements IProductoService {
-	
+
 	@Autowired
 	ProductoRepository productoRepository;
 
 	@Override
-	public Producto alta(String nombreProducto, String codIdent, double precio, int stock, String detalleProducto) {
-		Producto p= new Producto();
-		p.setNombreProducto(nombreProducto);
-		p.setCodIdent(codIdent);
-		p.setPrecio(precio);
-		p.setStock(stock);
-		p.setDetalleProducto(detalleProducto);
-		
-		
-		
-		p=productoRepository.save(p);
-		
-		return p;
-		
+	public Producto create(Producto producto) {
+
+		return productoRepository.save(producto);
+
 	}
-	
-	
-public Producto buscarXId(Long id) {
-		
-		return productoRepository.findOne(id);
-		
-	}
-	
-	
 
 	@Override
-	public List<Producto> obtenerTodosProducto() {
-		// TODO Auto-generated method stub
-		return Lists.newArrayList(productoRepository.findAll());
+	public Optional<Producto> getById(Long id) {
+
+		return productoRepository.findById(id);
+	}
+
+	@Override
+	public List<Producto> allProducto() {
+		
+		return productoRepository.findAll();
 	}
 
 }
