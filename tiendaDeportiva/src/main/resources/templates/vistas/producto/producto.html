@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<title>Producto</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+	integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
+	crossorigin="anonymous">
+<!-- <link rel="stylesheet" href="../css/shards.min.css"> -->
+</head>
+<body>
+	<div class="container my-5">
+		<h2>Lista de Productos</h2>
+		<div th:classappend="'alert-' + (${clase != null} ? ${clase} : info)"
+			th:if="${mensaje != null}" th:text="${mensaje}" class="alert">
+		</div>
+		<a class="btn btn-success mb-2" th:href="@{/producto/create}">Agregar
+			<i class="fa fa-plus"></i>
+		</a>
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>Nombre</th>
+					<th>Detalle</th>
+					<th>Código</th>
+					<th>Precio</th>
+					<th>Existencia</th>
+					<th>Editar</th>
+					<th>Eliminar</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="producto : ${productos}">
+					<td th:text="${producto.nombre}"></td>
+					<td th:text="${producto.detalle}"></td>
+					<td th:text="${producto.codigo}"></td>
+					<td th:text="${producto.precio}"></td>
+					<td th:text="${producto.stock}"></td>
+					<td><a class="btn btn-warning"
+						th:href="@{/producto/edit/{id}(id=${producto.id})}">Editar <i
+							class="fa fa-edit"></i></a></td>
+					<td>
+						<form th:action="@{producto/delete}" method="post">
+							<input type="hidden" name="id" th:value="${producto.id}" />
+							<button type="submit" class="btn btn-danger">
+								Eliminar <i class="fa fa-trash"></i>
+							</button>
+						</form>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+
+	<!-- jQuery -->
+	<script src="js/jquery.js"></script>
+
+	<!-- Bootstrap Core JavaScript -->
+	<script src="js/bootstrap.min.js"></script>
+</body>
+</html>
