@@ -32,6 +32,24 @@ public class Producto {
 	public Producto() {
 		super();
 	}
+	
+	
+	
+	
+	
+
+	public Producto(String nombre, String codigo, double precio, int stock, String detalle) {
+		this.nombre = nombre;
+		this.codigo = codigo;
+		this.precio = precio;
+		this.stock = stock;
+		this.detalle = detalle;
+	}
+
+
+
+
+
 
 	public Long getId() {
 		return id;

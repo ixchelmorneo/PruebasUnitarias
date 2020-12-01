@@ -1,9 +1,10 @@
 package com.uacm.edu.mx.models.repository;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.uacm.edu.mx.models.entity.Administador;
+import com.uacm.edu.mx.models.entity.Usuario;
 
-public interface AdministradorRepository extends CrudRepository<Administador, Long> {
+
+public interface AdministradorRepository extends JpaRepository<Usuario, Long>{
 
 }
