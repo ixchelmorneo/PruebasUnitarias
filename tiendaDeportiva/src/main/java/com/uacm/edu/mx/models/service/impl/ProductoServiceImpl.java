@@ -15,89 +15,15 @@ import com.uacm.edu.mx.models.service.coderror.CodigoError;
 @Service
 public class ProductoServiceImpl implements IProductoService {
 
-	//public static final Logger log = Logger.getLogger(ProductoServiceImpl.class);
-	
 	@Autowired
 	ProductoRepository productoRepository;
 
 	@Override
-	public Producto create(String nombre, String codigo, double precio, int stock, String detalle) 
-			throws ApplicacionExcepcion  {
-		
-		
-		//if (log.isDebugEnabled())
-			//log.debug("Entrando a ProductoServiceImpl.alta");
-		
-		Producto producto;
-		
-		if (!(nombre.matches("^[ A-Za-z]+$"))) {
-			throw new ApplicacionExcepcion(CodigoError.MAL_NOMBRE_PRODUCTO, "El nombre no es correcto");
-		}
-		
-		if (nombre.length() < 4 || nombre.length() > 255) {
-			throw new ApplicacionExcepcion(CodigoError.MAL_NOMBRE_PRODUCTO, "El nombre no es correcto");
-		}
-		
-		if (!(codigo.matches("^[0-9]{12}"))) {
-			throw new ApplicacionExcepcion(CodigoError.MAL_CODIDENT, "El codigo de identificacion del producto no es correcto");
-		}
-		
-		if ((codigo.length()<12)) {
-			throw new ApplicacionExcepcion(CodigoError.MAL_CODIDENT, "El codigo de identificacion del producto no es correcto");
-		}
-		
-		if ((codigo.length()>12)) {
-			throw new ApplicacionExcepcion(CodigoError.MAL_CODIDENT, "El codigo de identificacion del producto no es correcto");
-		}
-		
-		if ((precio<=0.0) ){
-			throw new ApplicacionExcepcion(CodigoError.ERROR_PRECIO, "El precio  es menor a 0");
-		}
-		
-		if ((precio>7000.00) ){
-			throw new ApplicacionExcepcion(CodigoError.ERROR_PRECIO, "El precio  es mayor a 7000");
-		}
-		
-		if ((stock <5||stock>70) ){
-			throw new ApplicacionExcepcion(CodigoError. ERROR_STOCK, "El stock  es incorrecto");
-		}
-		
-		if (!(detalle.matches("^[ A-Za-z-0-9]+$"))) {
-			throw new ApplicacionExcepcion(CodigoError.ERROR_DETALLE, "El detalle no es correcto");
-		}
-		
-		if ((detalle.length()<4)) {
-			throw new ApplicacionExcepcion(CodigoError.ERROR_DETALLE, "El detalle no es correcto");
-		}
-		
-		if ((detalle.length()>255)) {
-			throw new ApplicacionExcepcion(CodigoError.ERROR_DETALLE, "El detalle no es correcto");
-}
-		
+	public Producto create(Producto producto) {
 
-		
-		
-		
-		
-		Producto p= new Producto();
-		p.setNombre(nombre);
-		p.setCodigo(codigo);
-		p.setPrecio(precio);
-		p.setStock(stock);
-		p.setDetalle(detalle);
-		
-		
-		
-		producto=productoRepository.save(p);
-		
-		return producto;
-		
-		
-		// TODO Auto-generated method stub
-		
-	}	
-	
-	
+		return productoRepository.save(producto);
+
+	}
 
 	@Override
 	public Optional<Producto> getById(Long id) {
@@ -117,9 +43,9 @@ public class ProductoServiceImpl implements IProductoService {
 				orElseThrow(() -> new IllegalArgumentException("Invalid product Id: " + id));
 	productoRepository.deleteById(id);
 	}
-
+/*
 	@Override
-	public Producto edit(Producto producto, Producto editProducto) {
+	public Producto edit(Producto producto, Producto editProducto){
 		
 		System.out.println(producto.toString());
 		System.out.println(editProducto.toString());
@@ -131,6 +57,6 @@ public class ProductoServiceImpl implements IProductoService {
 		producto.setStock(editProducto.getStock());
 		
 		return productoRepository.save(producto);
-	}
+	}*/
 
 }

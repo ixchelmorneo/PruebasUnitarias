@@ -11,19 +11,21 @@ public class ApplicacionExcepcion extends Exception {
 			super(mensaje);
 			this.codigoError = codigoError;
 		}
+	
+//	public  ApplicacionExcepcion(String mensaje) {
+	//	super(mensaje);
+		
+//	}
 
 
-		/**
-		 * @return the codigoError
-		 */
+
+	
 		public int getCodigoError() {
 			return codigoError;
 		}
 
 
-		/**
-		 * @param codigoError the codigoError to set
-		 */
+	
 		public void setCodigoError(int codigoError) {
 			this.codigoError = codigoError;
 		}
